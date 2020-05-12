@@ -1,3 +1,4 @@
+
 <template>
     <div class="home" id="login">
         <h1>Welcome to Model Management</h1>
@@ -27,6 +28,7 @@
         }, 
         methods: {
             login() {
+
                 if (this.input.username != "" && this.input.password != "") {
                     fetch('https://localhost:44368/api/Account/login', {
                         method: 'POST',
@@ -37,9 +39,9 @@
                         headers: new Headers({
                             'Content-Type': 'application/json'
                         })
-                    }).then(res => res.json().then(token => {
+                    }).then(res => res.json().then((token) => {
                         localStorage.setItem("token", token.jwt);
-
+                        this.$router.push('/startPage')
                     }))
                 }
             }
