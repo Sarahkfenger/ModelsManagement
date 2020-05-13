@@ -31,7 +31,9 @@
         name: 'Jobs',
         data() {
             return {
-                jobList: []
+                jobList: [], 
+                isManager: false,
+                isModel: false,
             }
         },
         //at start
@@ -48,7 +50,22 @@
             if (response.ok)
                 this.jobList = await response.json();
             else
-                alert("Response not ok " + response.statusText);            
+                alert("Response not ok " + response.statusText);  
+
+            // Checks if user is model or manager
+            let jwt = localStorage.getItem("token");
+            let jwtData = jwt.split('.')[1]
+            let decodedJwtJsonData = window.atob(jwtData)
+            let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+            let role = decodedJwtData["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+            if (role == "Manager") {
+                this.isManager = true
+            }
+            else if (role == "Model") {
+                this.isModel = true
+            }
         }
     }
 
