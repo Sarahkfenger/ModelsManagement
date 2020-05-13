@@ -39,10 +39,17 @@
                         headers: new Headers({
                             'Content-Type': 'application/json'
                         })
-                    }).then(res => res.json().then((token) => {
-                        localStorage.setItem("token", token.jwt);
-                        this.$router.push('/startPage')
-                    }))
+                    }).then(res => {
+                        if (!res.status == 404) {
+                            throw new Error('Network response was not ok');
+                        }
+
+                        res.json().then((token) => {
+                            if (res.status)
+                                localStorage.setItem("token", token.jwt);
+                            this.$router.push('/startPage')
+                        })
+                    })
                 }
             }
         }
