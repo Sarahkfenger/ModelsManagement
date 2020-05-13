@@ -41,7 +41,7 @@
                         })
                     }).then(res => res.json().then((token) => {
                         localStorage.setItem("token", token.jwt);
-                        this.$router.push('/startPage')
+                        this.$router.push('/Jobs')
                     }))
                 }
             }
