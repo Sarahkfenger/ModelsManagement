@@ -89,7 +89,7 @@ namespace ModelsApi.Controllers
 
         // POST: api/Models
         [HttpPost]
-        public async Task<ActionResult<EfModel>> PostModel([FromBody] ModelDetails modelDto)
+        public async Task<ActionResult<EfModel>> PostModel(ModelDetails modelDto)
         {
             modelDto.Email = modelDto.Email.ToLower();
             var emailExist = await _context.Accounts.Where(u => u.Email == modelDto.Email).FirstOrDefaultAsync();

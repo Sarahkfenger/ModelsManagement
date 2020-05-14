@@ -2,7 +2,7 @@
     <div class="createpage" id="create">
         <h1>Opret</h1>
         <span>
-            <p>Which do you want to create?:</p>
+            Which do you want to create?:
             <input type="radio" id="model" value="model" v-model="input.picked" />
             <label>Model</label>
             <input type="radio" id="manager" value="manager" v-model="input.picked" />
@@ -44,13 +44,13 @@
             <input type="text" name="nationality" v-model="input.nationality" placeholder="Nationality" />
             <br />
             <p>Birthday:</p>
-            <input type="text" name="birthday" v-model="input.birthday" placeholder="Birthday" />
+            <input type="date" name="birthdate" v-model="input.birthdate" placeholder="Birth date" />
             <br />
             <p>Height:</p>
-            <input type="text" name="height" v-model="input.height" placeholder="Height" />
+            <input type="number" name="height" v-model.number="input.height" placeholder="Height" />
             <br />
             <p>Shoe size:</p>
-            <input type="text" name="shoesize" v-model="input.shoesize" placeholder="Shoe size" />
+            <input type="number" name="shoesize" v-model.number="input.shoesize" placeholder="Shoe size" />
             <br />
             <p>Hair color:</p>
             <input type="text" name="haircolor" v-model="input.haircolor" placeholder="Hair color" />
@@ -86,20 +86,19 @@
                     zip: "",
                     country: "",
                     nationality: "",
-                    birthday: "",
-                    height: "",
-                    shoesize: "",
+                    birthdate: null,
+                    height: null,
+                    shoesize: null,
                     haircolor: "",
                     eyecolor: "",
                     comments: "",
-                    picked: "model",
+                    picked: "manager",
                     isModel: "model",
                     isManager: "manager"
                 }
             }
         },
         props: {
-            isModel: true
         },
         methods: {
             async create() {
@@ -151,6 +150,19 @@
                                     firstName: this.input.firstname,
                                     lastName: this.input.lastname,
                                     email: this.input.email,
+                                    phoneNo: this.input.phoneno,
+                                    adressline1: this.input.adressline1,
+                                    adressline2: this.input.adressline2,
+                                    zip: this.input.zip,
+                                    city: this.input.city,
+                                    country: this.input.country,
+                                    birthDate: this.input.birthdate,
+                                    nationality: this.input.nationality,
+                                    height: this.input.height,
+                                    shoeSize: this.input.shoesize,
+                                    hairColor: this.input.haircolor,
+                                    eyeColor: this.input.eyecolor,
+                                    comments: this.input.comments,
                                     password: this.input.password
                                 })
                         }).then(res => {
@@ -164,9 +176,7 @@
                     } else {
                         this.input.firstname = "Model gik galt";
                     }
-                } else {
-                    this.input.lastname = "noget med radio";
-                }
+                } 
             }
         }
     }
@@ -174,6 +184,7 @@
 
 <style scoped>
     #create {
+        text-align: center;
         width: 500px;
         padding: 50px;
         border: dotted;
