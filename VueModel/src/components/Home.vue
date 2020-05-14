@@ -3,11 +3,10 @@
     <div class="home" id="login">
         <h1>Welcome to Model Management</h1>
         <p>First you need to login</p>
+        <br/>
         <input type="text" name="username" v-model="input.username" placeholder="Username"/>
         <br/>
-        <br/>
         <input type="password" name="password" v-model="input.password" placeholder="Password"/>
-        <br/>
         <br/>
         <button type="button" v-on:click="login()">Login</button>
     </div>
@@ -56,7 +55,6 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #login {
         width: 500px;
@@ -65,6 +63,9 @@
         margin: auto;
         margin-top: 200px;
         padding: 20px;
+    }
+    h1 {
+        font-weight: bold;
     }
 </style>
 

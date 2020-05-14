@@ -52,9 +52,10 @@
                             throw new Error(res.statusText);
                         }
                         if (res.status == 200) {
-                            console.log("det virkede");
+                           // console.log("det virkede");
                         }
-                });
+                    });
+                }
             }
         }
     }
