@@ -92,7 +92,7 @@ namespace ModelsApi.Controllers
 
         // POST: api/Managers
         [HttpPost]
-        public async Task<ActionResult<EfManager>> PostManager(Manager managerDto)
+        public async Task<ActionResult<EfManager>> PostManager( [FromBody] Manager managerDto)
         {
             if (managerDto == null)
                 return BadRequest("Data is missing");
