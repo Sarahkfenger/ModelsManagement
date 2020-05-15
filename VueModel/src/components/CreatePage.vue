@@ -62,10 +62,11 @@
             <input type="text" name="comments" v-model="input.comments" placeholder="Comments" />
             <br />
         </div>
-
-        <br />
         <br />
         <button type="button" v-on:click="create()">Create {{ input.picked }}</button>
+        <br />
+        <p class="typo__p" v-if="createstatus === 'ErrorInFields'">Please fill out all fields</p>
+        <p class="typo__p" v-if="submitstatus === 'OK'">The job is created!</p>
     </div>
 </template>
 
@@ -95,7 +96,8 @@
                     picked: "manager",
                     isModel: "model",
                     isManager: "manager"
-                }
+                },
+                createstatus: "pending"
             }
         },
         props: {
@@ -125,9 +127,10 @@
                                 else
                                     throw new Error('Network response was not ok');
                             }
+                            this.createstatus = "OK";
                         });
                     } else {
-                        this.input.firstname = "Manager gik galt";
+                        this.createstatus = "ErrorInFields";
                     }
                 } else if (this.input.picked == this.input.isModel) {
                     if (this.input.firstname != "" && this.input.lastname != ""
@@ -172,9 +175,10 @@
                                 else
                                     throw new Error('Network response was not ok');
                             }
+                            this.createstatus = "OK";
                         });
                     } else {
-                        this.input.firstname = "Model gik galt";
+                        this.createstatus = "ErrorInFields";
                     }
                 } 
             }
@@ -191,6 +195,7 @@
         margin: auto;
     }
     h1 {
-         text-align:center;
+        font-size: 200%;
+        text-align:center;
      }
 </style>
