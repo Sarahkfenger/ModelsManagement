@@ -33,10 +33,16 @@
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
     <Content Include="src\App.vue" />
+    <Content Include="src\components\CreatePage.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\Home.vue" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="src\components\Jobs.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\Navbar.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\components\StartPage.vue">

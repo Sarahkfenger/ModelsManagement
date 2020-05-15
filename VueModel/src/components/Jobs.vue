@@ -61,7 +61,8 @@
                 selectedJob: {},
                 selectedModel: {},
                 expense: 0,
-                jobModels: {}
+                jobModels: {},
+                isManager: false,
             }
         },
         methods: {
@@ -179,11 +180,22 @@
             }
             else
                 alert("Response not ok " + expenseResponse.statusText);
+
+             // Checks if user is model or manager
+            let jwt = localStorage.getItem("token");
+            let jwtData = jwt.split('.')[1]
+            let decodedJwtJsonData = window.atob(jwtData)
+            let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+            let role = decodedJwtData["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+            if (role == "Manager") {
+                this.isManager = true
+            }
             
         }
 
     }
-
 </script>
 
 
