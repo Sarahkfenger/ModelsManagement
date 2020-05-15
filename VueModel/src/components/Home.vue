@@ -1,13 +1,14 @@
 
 <template>
     <div class="home" id="login">
-        <h1>Welcome to Model Management</h1>
+        <h1>Welcome to Fifty Shades of Fashion!</h1>
         <p>First you need to login</p>
         <br/>
         <input type="text" name="username" v-model="input.username" placeholder="Username"/>
         <br/>
         <input type="password" name="password" v-model="input.password" placeholder="Password"/>
         <br/>
+        <br />
         <button type="button" v-on:click="login()">Login</button>
     </div>
 </template>
@@ -66,6 +67,9 @@
     }
     h1 {
         font-weight: bold;
+    }
+    input{
+        margin-bottom: 5px;
     }
 </style>
 

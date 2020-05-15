@@ -1,8 +1,9 @@
 <template>
     <div class="createpage" id="create">
-        <h1>Opret</h1>
+        <h1>Create</h1>
         <span>
-            Which do you want to create?:
+            Which do you want to create?
+        <br />
             <input type="radio" id="model" value="model" v-model="input.picked" />
             <label>Model</label>
             <input type="radio" id="manager" value="manager" v-model="input.picked" />
@@ -191,11 +192,17 @@
         text-align: center;
         width: 500px;
         padding: 50px;
-        border: dotted;
+        border: 1px solid #CCCCCC;
         margin: auto;
     }
     h1 {
         font-size: 200%;
         text-align:center;
      }
+    input{
+        margin: 10px;
+    }
+    button{
+        font-size: 105%;
+    }
 </style>

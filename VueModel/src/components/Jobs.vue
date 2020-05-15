@@ -259,12 +259,13 @@
     button{
         padding: 10px;
         margin: 10px;
+        font-size: 105%;
     }
     h1 {
         font-size: 200%;
         margin: 10px;
     }
-    p {
+    p, input {
         font-size: 125%;
         margin: 10px;
     }

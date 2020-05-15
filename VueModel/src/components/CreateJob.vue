@@ -12,6 +12,7 @@
         <p>Comments:</p>
         <input type="text" name="comments" v-model="input.comments" placeholder="Comments" />
         <br />
+        <br />
         <button type="button" v-on:click="createJob()">Create new job</button>
         <br />
         <p class="typo__p" v-if="createstatus === 'ErrorInFields'">Please fill out all fields</p>
@@ -47,7 +48,7 @@
                         body: JSON.stringify(
                             {
                                 customer: this.input.customer,
-                                startDate: this.input.startDate,
+                                startDate: this.input.startdate,
                                 days: this.input.days,
                                 location: this.input.location,
                                 comments: this.input.comments
@@ -75,12 +76,20 @@
         text-align: center;
         width: 500px;
         padding: 50px;
-        border: dotted;
+        border: 1px solid #CCCCCC;
         margin: auto;
     }
 
     h1 {
         font-size: 200%;
         text-align: center;
+    }
+
+    input {
+        margin: 10px;
+    }
+
+    button {
+        font-size: 105%;
     }
 </style>
