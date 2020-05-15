@@ -62,7 +62,6 @@
             <input type="text" name="comments" v-model="input.comments" placeholder="Comments" />
             <br />
         </div>
-
         <br />
         <br />
         <button type="button" v-on:click="create()">Create {{ input.picked }}</button>

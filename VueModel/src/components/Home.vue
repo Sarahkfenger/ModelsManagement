@@ -47,7 +47,7 @@
                         res.json().then((token) => {
                             if (res.status)
                                 localStorage.setItem("token", token.jwt);
-                            this.$router.push('/createpage')
+                            this.$router.push('/createjob')
                         })
                     })
                 }

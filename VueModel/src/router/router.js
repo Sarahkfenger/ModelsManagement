@@ -4,6 +4,7 @@ import StartPage from '../components/StartPage.vue'
 import Home from '../components/Home.vue'
 import Jobs from '../components/Jobs.vue'
 import CreatePage from '../components/CreatePage.vue';
+import CreateJob from '../components/CreateJob.vue';
 
 Vue.use(Router);
 
@@ -26,6 +27,10 @@ export default new Router({
         {
             path: '/createpage',
             component: CreatePage
+        },
+        {
+            path: '/createjob',
+            component: CreateJob,
         }
     ]
 })
