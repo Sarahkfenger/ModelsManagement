@@ -18,7 +18,7 @@
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons" onclick="logout">
+                    <div class="buttons" v-on:click="logout()">
                         <a class="button is-dark">
                             <strong>Log Out</strong>
                         </a>
@@ -32,7 +32,13 @@
 
 <script>
     export default {
-        name: 'Nav'
+        name: 'Nav', 
+        methods: {
+            logout() {
+                localStorage.removeItem("token");
+                     this.$router.push('/');
+            },
+        },
     }
 </script>
 
