@@ -6,19 +6,20 @@
         <p>Start date:</p>
         <input type="date" name="startdate" v-model="input.startdate" placeholder="Start date" />
         <p>Duration in days:</p>
-        <input type="number" min="0" name="days" v-model.number="input.days" placeholder="Duration" />
+        <input type="number" name="days" v-model.number="input.days" placeholder="Duration" pattern="[0-9]*" min="0" />
         <p>Location:</p>
         <input type="text" name="location" v-model="input.location" placeholder="Location" />
         <p>Comments:</p>
         <input type="text" name="comments" v-model="input.comments" placeholder="Comments" />
         <br />
-        <br />
         <button type="button" v-on:click="createJob()">Create new job</button>
+        <br />
+        <p class="typo__p" v-if="createstatus === 'ErrorInFields'">Please fill out all fields</p>
+        <p class="typo__p" v-if="createstatus === 'OK'">The job is created!</p>
     </div>
 </template>
 
 <script>
-    import { required, minLength } from 'vuelidate/lib/validators'
     export default {
         name: 'createjob',
         data() {
@@ -29,41 +30,41 @@
                     days: null,
                     location: "",
                     comments: ""
-                }
-            }
-        },
-        validations: {
-            input: {
-                customer: { required, min: minLength(1) }
+                },
+                createstatus: "pending"
             }
         },
         methods: {
             async createJob() {
-                fetch('https://localhost:44368/api/Jobs', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {
-                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        {
-                            customer: this.input.customer,
-                            startDate: this.input.startDate,
-                            days: this.input.days,
-                            location: this.input.location,
-                            comments: this.input.comments
-                        })
-                }).then(res => {
-                    if (!res.ok) {
-                        if (res.status == 400)
-                            throw new Error(res.statusText);
-                        else
-                            throw new Error('Network response was not ok');
-                    } else {
-                        this.input.customer = "Det gik!"
-                    }
-                });
+                if (this.input.customer != "" && this.input.startDate != "" && this.input.days != "" && this.input.location != "") {
+                    fetch('https://localhost:44368/api/Jobs', {
+                        method: 'POST',
+                        credentials: 'include',
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(
+                            {
+                                customer: this.input.customer,
+                                startDate: this.input.startDate,
+                                days: this.input.days,
+                                location: this.input.location,
+                                comments: this.input.comments
+                            })
+                    }).then(res => {
+                        if (!res.ok) {
+                            if (res.status == 400)
+                                throw new Error(res.statusText);
+                            else
+                                throw new Error('Network response was not ok');
+                        } else {
+                            this.createstatus = "OK";
+                        }
+                    });
+                } else {
+                    this.createstatus = "ErrorInFields";
+                }
             }
         }
     }
@@ -79,6 +80,7 @@
     }
 
     h1 {
+        font-size: 200%;
         text-align: center;
     }
 </style>

@@ -15,6 +15,7 @@
             <div class="navbar-start">
                 <router-link to="/jobs" class="navbar-item">Jobs</router-link>
                 <router-link to="/createpage" class="navbar-item">Create manager or model</router-link>
+                <router-link to="/createjob" class="navbar-item">Create job</router-link>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
@@ -44,6 +45,5 @@
         .a    {
         font-weight: bold;
         color: #2c3e50;
-
     }
 </style>
